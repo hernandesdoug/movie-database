@@ -1,8 +1,11 @@
-import Header from "../../components/Header.tsx";
-import Footer from "../../components/Footer.tsx";
-import Search from "../../components/Search.tsx";
+import Header from "../src/components/Header.tsx";
+import Footer from "../src/components/Footer.tsx";
+import Search from "../src/components/Search.tsx";
+import MovieList from "./components/Movies.tsx";
 
-function MovieList() {
+
+function App() {
+  
     return (
         <>
             <Header />
@@ -15,7 +18,13 @@ function MovieList() {
                     <button>Upcoming</button>
                 </div>
                 <div>
-
+                
+                    <div >
+                        <MovieList />
+                     </div>    
+            
+               
+                
                 </div>
                 <div>
                     <button>Previous</button>
@@ -27,4 +36,4 @@ function MovieList() {
         </>
     )
 }
-export default MovieList;
+export default App;

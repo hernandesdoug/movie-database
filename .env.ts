@@ -1,0 +1,4 @@
+function exportApiKey () {
+    return "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NjE0OTEzMTE2YzQ1YmYxNmNkNTUwZjAzNDkwNzgzNCIsIm5iZiI6MTc1NjEyNDE0NC40MTgsInN1YiI6IjY4YWM1M2YwNjc0MjNhYWU1YzZjZWFmMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.vTUiCDlmoSNnGkHHvFo8INxf-DBltsmToBnNwJC2nuE"
+}
+export default exportApiKey;
