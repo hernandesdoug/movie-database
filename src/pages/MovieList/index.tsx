@@ -1,10 +1,12 @@
 import Header from "../../components/Header.tsx";
 import Footer from "../../components/Footer.tsx";
+import Search from "../../components/Search.tsx";
 
 function MovieList() {
     return (
         <>
             <Header />
+            <Search />
             <main>
                 <div>
                     <button>Popular</button>
