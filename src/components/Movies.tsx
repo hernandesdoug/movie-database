@@ -10,9 +10,9 @@ const Movies: React.FC = () => {
 
     const token = import.meta.env.VITE_TOKEN;
 
-    const fetchMovies = async () => {
+    const fetchMovies = async (pageNumber = page) => {
         try {
-            const response = await api.get<MovieProps>(`movie/${category}?language=en-US&page=${page}`,
+            const response = await api.get<MovieProps>(`movie/${category}?language=en-US&page=${pageNumber}`,
                 {
                     headers: {
                         'Authorization': `Bearer ${token}`
@@ -21,6 +21,7 @@ const Movies: React.FC = () => {
             if (response.status === 200) {
                 console.log(response.data)
                 setMovies(response.data.results);
+                setPage(pageNumber);
             } else {
                 console.log("Fail loading data", response.status);
             }
@@ -37,15 +38,13 @@ const Movies: React.FC = () => {
         <>
     
         <GridMovies>
-            <MovieCard>
                 {movies.map(movie => (
-                    <div key={movie.id}>
+                    <MovieCard key={movie.id}>
                         <PosterMovie src={`https://image.tmdb.org/t/p/w500${movie.poster_path}` }/>
                         <MovieTitle>${movie.title}</MovieTitle>
                         <Rating>Rating: </Rating><VoteAvg>${movie.vote_average.toFixed(1)}</VoteAvg>
-                    </div>
+                    </MovieCard>
                 ))}
-            </MovieCard>
         </GridMovies>
         </>
     )

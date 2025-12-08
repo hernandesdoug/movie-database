@@ -1,12 +1,14 @@
 import styled from "styled-components";
-function Pagination() {
+import type { PaginationProps } from "./Pagination.ts";
+
+function Pagination({ page, onNext, onPrev }: PaginationProps) {
 
     return (
         <>
             <Container>
-                <BtnPagination>Previous</BtnPagination>
-                <NumberPage>1</NumberPage>
-                <BtnPagination>Next</BtnPagination>
+                <BtnPagination disabled={page === 1} onClick={onPrev}>Previous</BtnPagination>
+                <NumberPage>{page}</NumberPage>
+                <BtnPagination onClick={onNext}>Next</BtnPagination>
             </Container>
         </>
     )
