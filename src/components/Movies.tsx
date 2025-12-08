@@ -1,14 +1,12 @@
 import api from "../services/api.ts";
 import type { MovieProps, Movie } from "./Movie.ts";
 import React, { useEffect, useState } from 'react';
-
-
+import styled from "styled-components";
 
 const Movies: React.FC = () => {
     const [movies, setMovies] = useState<Movie[]>([]);
     const [category, setCategory] = useState("popular");
     const [page, setPage] = useState(1);
-    const [isModalOpen, setisModalOpen] = useState(false);
 
     const token = import.meta.env.VITE_TOKEN;
 
@@ -37,17 +35,54 @@ const Movies: React.FC = () => {
 
     return (
         <>
-        {isModalOpen && <h1>Modal</h1>}
-            <ul>
+    
+        <GridMovies>
+            <MovieCard>
                 {movies.map(movie => (
-                    <li key={movie.id}>
-                        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
-                        <h1>${movie.title}</h1>
-                        <h4>Rating: </h4><p>${movie.vote_average.toFixed(1)}</p>
-                    </li>
+                    <div key={movie.id}>
+                        <PosterMovie src={`https://image.tmdb.org/t/p/w500${movie.poster_path}` }/>
+                        <MovieTitle>${movie.title}</MovieTitle>
+                        <Rating>Rating: </Rating><VoteAvg>${movie.vote_average.toFixed(1)}</VoteAvg>
+                    </div>
                 ))}
-            </ul>
+            </MovieCard>
+        </GridMovies>
         </>
     )
 }
+const GridMovies = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+`;
+
+const MovieCard = styled.div`
+  background: #222;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+`;
+
+const PosterMovie = styled.img`
+ width: 100%;
+  height: auto;
+`;
+
+const MovieTitle = styled.h1`
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: #f5f5f5;
+`;
+
+const Rating = styled.h4`
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: #f5f5f5;
+  display: inline-block;
+`;
+
+const VoteAvg = styled(Rating)``;
+
 export default Movies;

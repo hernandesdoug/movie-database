@@ -15,6 +15,7 @@ const HeaderPage = styled.header`
 `;
 
 const Title = styled.h1`
+  margin: 10px 0 0;
   width: 300px;
   text-align: center;
 `;
