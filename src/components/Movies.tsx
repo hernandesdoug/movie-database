@@ -1,16 +1,17 @@
 import api from "../services/api.ts";
 import type { MovieProps, Movie } from "./Movie.ts";
+import Pagination from "./Pagination.tsx";
+import type { CategoryProps } from "./Category.ts";
 import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
 
-const Movies: React.FC = () => {
+const Movies: React.FC = ({category}) => {
     const [movies, setMovies] = useState<Movie[]>([]);
-    const [category, setCategory] = useState("popular");
     const [page, setPage] = useState(1);
 
     const token = import.meta.env.VITE_TOKEN;
 
-    const fetchMovies = async (pageNumber = page) => {
+    const fetchMovies = async (pageNumber = page, ) => {
         try {
             const response = await api.get<MovieProps>(`movie/${category}?language=en-US&page=${pageNumber}`,
                 {
@@ -34,9 +35,13 @@ const Movies: React.FC = () => {
         fetchMovies();
     }, [page, category])
 
+    const handleNext = () => fetchMovies(page + 1);
+    const handlePrev = () => {
+      if (page > 1) fetchMovies(page - 1);
+    };
+
     return (
         <>
-    
         <GridMovies>
                 {movies.map(movie => (
                     <MovieCard key={movie.id}>
@@ -46,7 +51,12 @@ const Movies: React.FC = () => {
                     </MovieCard>
                 ))}
         </GridMovies>
+         <Pagination page={page} onNext={handleNext} onPrev={handlePrev} />
         </>
+
+        
+
+       
     )
 }
 const GridMovies = styled.div`

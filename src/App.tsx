@@ -5,10 +5,13 @@ import MovieList from "./components/Movies.tsx";
 import Pagination  from "./components/Pagination.tsx";
 import Category from "./components/Category.tsx";
 
+
 function App() {
-  
+ 
     return (
-        <>
+
+            
+            <>
             <Header />
             <Search />
             <Category />    
@@ -16,6 +19,9 @@ function App() {
             <Pagination />    
             <Footer />
         </>
+
+          
+            
     )
 }
 export default App;

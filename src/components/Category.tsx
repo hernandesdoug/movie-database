@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import React,  { useState } from 'react';
-
+import Movies from './Movies';
+import type { CategoryProps } from './Category';
+import React, {useState} from 'react';
 
 function Category() {
-    const [category, setCategory] = useState("popular");
+    const [category, setCategory] = useState<CategoryProps>("popular");
     return (
         <>
             <Container>
@@ -11,6 +12,7 @@ function Category() {
                 <BtnCategory onClick={() => setCategory("now_playing")}>Now Playing</BtnCategory>
                 <BtnCategory onClick={() => setCategory("top_rated")}>Top Rated</BtnCategory>
                 <BtnCategory onClick={() => setCategory("upcoming")}>Upcoming</BtnCategory>
+            <Movies category={category} />
             </Container>
         </>
     )
