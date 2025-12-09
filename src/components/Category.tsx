@@ -8,10 +8,10 @@ function Category({ onChangeCategory }: CategoryProps) {
     return (
         <>
             <Container>
-                <BtnCategory onClick={() => onChangeCategory("popular")}>Popular</BtnCategory>
-                <BtnCategory onClick={() => onChangeCategory("now_playing")}>Now Playing</BtnCategory>
-                <BtnCategory onClick={() => onChangeCategory("top_rated")}>Top Rated</BtnCategory>
-                <BtnCategory onClick={() => onChangeCategory("upcoming")}>Upcoming</BtnCategory>
+                <button onClick={() => onChangeCategory("popular")}>Popular</button>
+                <button onClick={() => onChangeCategory("now_playing")}>Now Playing</button>
+                <button onClick={() => onChangeCategory("top_rated")}>Top Rated</button>
+                <button onClick={() => onChangeCategory("upcoming")}>Upcoming</button>
             </Container>
         </>
     )
@@ -20,10 +20,9 @@ function Category({ onChangeCategory }: CategoryProps) {
 const Container = styled.div`
   padding: 10px;
   text-align: left;
-`;
 
-const BtnCategory = styled(Container)`
- padding: 10px;
+ button {
+  padding: 10px;
   border: none;
   border-radius: 5px;
   background: #e50914;
@@ -31,5 +30,7 @@ const BtnCategory = styled(Container)`
   font-weight: bold;
   cursor: pointer;
   margin-left: 5px;
+ }
+  
 `;
 export default Category;

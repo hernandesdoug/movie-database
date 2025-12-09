@@ -60,8 +60,8 @@ const Movies: React.FC = () => {
                     <MovieCard key={movie.id} 
                     onClick={() => openModal(movie)}>
                         <PosterMovie src={`https://image.tmdb.org/t/p/w500${movie.poster_path}` }/>
-                        <MovieTitle>${movie.title}</MovieTitle>
-                        <Rating>Rating: </Rating><VoteAvg>${movie.vote_average.toFixed(1)}</VoteAvg>
+                        <MovieTitle>{movie.title}</MovieTitle>
+                        <Rating>Rating: </Rating><VoteAvg>{movie.vote_average.toFixed(1)}</VoteAvg>
                     </MovieCard>
                 ))}
         </GridMovies>
@@ -75,7 +75,7 @@ const Movies: React.FC = () => {
                             src={`https://image.tmdb.org/t/p/w500${selectedMovie.poster_path}`}
                             alt={selectedMovie.title}
                         />
-                        <p><strong>Rating:</strong> {selectedMovie.vote_average}</p>
+                        <p><strong>Rating:</strong> {selectedMovie.vote_average.toFixed(1)}</p>
                         <p><strong>Overview:</strong> {selectedMovie.overview}</p>
                         <p><strong>Release Date:</strong> {selectedMovie.release_date}</p>
                     </ModalContent>
