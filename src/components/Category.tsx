@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
-function Category({ onChangeCategory }) {
+interface CategoryProps {
+    onChangeCategory: (category: string) => void;
+}
+function Category({ onChangeCategory }: CategoryProps) {
 
     return (
         <>
