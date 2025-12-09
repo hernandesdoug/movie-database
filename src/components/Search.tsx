@@ -22,15 +22,14 @@
             }
           })
         if (response.status === 200) {
-          console.log(response.data)
-          setmodeSearch(true);
-          setMovies(response.data.results);
-          setPage(pageNumber);
+           setmodeSearch(true);
+           setMovies(response.data.results);
+           setPage(pageNumber);
         } else {
-          console.log("Fail loading data", response.status);
+           console.log("Fail loading data", response.status);
         }
       } catch (error) {
-        console.error("Unexpected error!", error);
+         console.error("Unexpected error!", error);
       }
     };
 
@@ -52,7 +51,7 @@
         {modeSearch && (
           <>
           {movies.length === 0 ? (
-            <p>No results</p>
+            <NoResults>No results</NoResults>
           ) : (
             <>
           <GridMovies>
@@ -127,5 +126,10 @@
   `;
 
   const VoteAvg = styled(Rating)``;
+
+  const NoResults = styled.p`
+    grid-column: span 5;
+    text-align: center;
+  `;
 
   export default Search;

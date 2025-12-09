@@ -1,3 +1,7 @@
 export interface CategoryProps {
-    category: "popular" | "now_playing" | "top_rated" | "upcoming";
+    popular: () => void;
+    nowPlaying: () => void;
+    topRated: () => void;
+    upcoming: () => void;
 }
+

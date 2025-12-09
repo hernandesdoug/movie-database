@@ -7,7 +7,7 @@ function Pagination({ page, onNext, onPrev }: PaginationProps) {
         <>
             <Container>
                 <BtnPagination disabled={page === 1} onClick={onPrev}>Previous</BtnPagination>
-                <NumberPage>{page}</NumberPage>
+                <NumberPage>{page} of </NumberPage>
                 <BtnPagination onClick={onNext}>Next</BtnPagination>
             </Container>
         </>

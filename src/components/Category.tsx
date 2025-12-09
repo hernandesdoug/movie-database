@@ -1,18 +1,14 @@
 import styled from 'styled-components';
-import Movies from './Movies';
-import type { CategoryProps } from './Category';
-import React, {useState} from 'react';
 
-function Category() {
-    const [category, setCategory] = useState<CategoryProps>("popular");
+function Category({ onChangeCategory }) {
+
     return (
         <>
             <Container>
-                <BtnCategory onClick={() => setCategory("popular")}>Popular</BtnCategory>
-                <BtnCategory onClick={() => setCategory("now_playing")}>Now Playing</BtnCategory>
-                <BtnCategory onClick={() => setCategory("top_rated")}>Top Rated</BtnCategory>
-                <BtnCategory onClick={() => setCategory("upcoming")}>Upcoming</BtnCategory>
-            <Movies category={category} />
+                <BtnCategory onClick={() => onChangeCategory("popular")}>Popular</BtnCategory>
+                <BtnCategory onClick={() => onChangeCategory("now_playing")}>Now Playing</BtnCategory>
+                <BtnCategory onClick={() => onChangeCategory("top_rated")}>Top Rated</BtnCategory>
+                <BtnCategory onClick={() => onChangeCategory("upcoming")}>Upcoming</BtnCategory>
             </Container>
         </>
     )
