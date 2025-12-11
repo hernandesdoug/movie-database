@@ -7,6 +7,7 @@
   const Search: React.FC = () => {
     const [movies, setMovies] = useState<Movie[]>([]);
     const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
     const [movieSearch, setmovieSearch] = useState("");
     const [modeSearch, setmodeSearch] = useState(false);
 
@@ -25,6 +26,7 @@
            setmodeSearch(true);
            setMovies(response.data.results);
            setPage(pageNumber);
+          setTotalPages(response.data.total_pages);
         } else {
            console.log("Fail loading data", response.status);
         }
@@ -58,15 +60,15 @@
               {movies.map(movie => (
                       <MovieCard key={movie.id}>
                           <PosterMovie src={`https://image.tmdb.org/t/p/w500${movie.poster_path}` }/>
-                          <MovieTitle>${movie.title}</MovieTitle>
-                          <Rating>Rating: </Rating><VoteAvg>${movie.vote_average.toFixed(1)}</VoteAvg>
+                          <MovieTitle>{movie.title}</MovieTitle>
+                          <Rating>Rating: </Rating><VoteAvg>{movie.vote_average.toFixed(1)}</VoteAvg>
                       </MovieCard>
               ))}
             </GridMovies>
           
             </>
         )}
-        <Pagination page={page} onNext={handleNext} onPrev={handlePrev} />
+        <Pagination page={page} total_pages={totalPages} onNext={handleNext} onPrev={handlePrev} />
         </>
         )} 
       </div>

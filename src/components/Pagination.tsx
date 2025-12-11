@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import type { PaginationProps } from "./Pagination.ts";
 
-function Pagination({ page, onNext, onPrev }: PaginationProps) {
+function Pagination({ page, total_pages, onNext, onPrev }: PaginationProps) {
 
     return (
         <>
             <Container>
                 <BtnPagination disabled={page === 1} onClick={onPrev}>Previous</BtnPagination>
-                <NumberPage>{page} of </NumberPage>
+                <NumberPage>{page} of {total_pages}</NumberPage>
                 <BtnPagination onClick={onNext}>Next</BtnPagination>
             </Container>
         </>

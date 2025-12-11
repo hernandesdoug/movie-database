@@ -8,6 +8,7 @@ import styled from "styled-components";
 const Movies: React.FC = () => {
     const [movies, setMovies] = useState<Movie[]>([]);
     const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
     const [category, setCategory] = useState("popular");
     const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
     const [showModal, setShowModal] = useState(false);
@@ -25,6 +26,7 @@ const Movies: React.FC = () => {
             if (response.status === 200) {
                 setMovies(response.data.results);
                 setPage(pageNumber);
+                setTotalPages(response.data.total_pages);
             } else {
                 console.log("Fail loading data", response.status);
             }
@@ -65,7 +67,7 @@ const Movies: React.FC = () => {
                     </MovieCard>
                 ))}
         </GridMovies>
-         <Pagination page={page} onNext={handleNext} onPrev={handlePrev} />
+         <Pagination page={page} total_pages={totalPages} onNext={handleNext} onPrev={handlePrev} />
          {showModal && selectedMovie && (
                 <MovieModal>
                     <ModalContent>
