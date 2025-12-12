@@ -1,6 +1,6 @@
 export interface PaginationProps {
   page: number;
-  total_pages: number;
+  totalPages: number;
   onNext: () => void;
   onPrev: () => void;
 }

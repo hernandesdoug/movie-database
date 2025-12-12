@@ -3,13 +3,14 @@
   import Pagination from "./Pagination.tsx";
   import React, { useState } from 'react';
   import styled from 'styled-components';
+ 
 
   const Search: React.FC = () => {
     const [movies, setMovies] = useState<Movie[]>([]);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const [movieSearch, setmovieSearch] = useState("");
-    const [modeSearch, setmodeSearch] = useState(false);
+    const [movieSearch, setMovieSearch] = useState("");
+    const [modeSearch, setModeSearch] = useState(false);
 
     const token = import.meta.env.VITE_TOKEN;
 
@@ -23,10 +24,10 @@
             }
           })
         if (response.status === 200) {
-           setmodeSearch(true);
+           setModeSearch(true);
            setMovies(response.data.results);
            setPage(pageNumber);
-          setTotalPages(response.data.total_pages);
+           setTotalPages(response.data.total_pages);
         } else {
            console.log("Fail loading data", response.status);
         }
@@ -46,7 +47,7 @@
           <InputSearch type="text" id="srch-movie" 
           placeholder="Search movie by title..." 
           value={movieSearch}
-          onChange={(e) => setmovieSearch(e.target.value)}
+          onChange={(e) => setMovieSearch(e.target.value)}
           />
           <BtnSearch onClick={() => fetchSearch(1)}>Search</BtnSearch>
         </div>
@@ -68,7 +69,8 @@
           
             </>
         )}
-        <Pagination page={page} total_pages={totalPages} onNext={handleNext} onPrev={handlePrev} />
+      
+        <Pagination page={page} totalPages={totalPages} onNext={handleNext} onPrev={handlePrev} />
         </>
         )} 
       </div>

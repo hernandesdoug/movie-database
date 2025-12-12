@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { FooterPage } from "../assets/css/footer";
 
 function Footer() {
     return (
@@ -9,10 +9,4 @@ function Footer() {
         </>
     )
 }
-const FooterPage = styled.footer`
-  margin: 10px 0 0;
-  padding: 10px;
-  text-align: center;
-`;
-
 export default Footer;
