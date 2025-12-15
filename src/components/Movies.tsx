@@ -5,7 +5,7 @@ import Category from "./Category.tsx";
 import React, { useEffect, useState } from 'react';
 import {GridMovies, MovieCard, PosterMovie, MovieTitle, Rating, 
         MovieModal, ModalContent, VoteAvg, CloseButton, InputSearch,
-        BtnSearch} from "../assets/css/movies.tsx";
+        BtnSearch, NoResults} from "../assets/css/movies.tsx";
 
 const Movies: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -92,6 +92,10 @@ const Movies: React.FC = () => {
         <BtnSearch onClick={() => fetchSearch(1)}>Search</BtnSearch>
       </div>
       <Category onChangeCategory={setCategory} />
+    
+          {movies.length === 0 ? (
+            <NoResults>No results</NoResults>
+          ) : (
       <GridMovies>
         {movies.map(movie => (
           <MovieCard key={movie.id}
@@ -102,6 +106,7 @@ const Movies: React.FC = () => {
           </MovieCard>
         ))}
       </GridMovies>
+      )}
       <Pagination page={page} totalPages={totalPages} onNext={handleNext} onPrev={handlePrev} />
       {showModal && selectedMovie && (
         <MovieModal>

@@ -95,3 +95,7 @@ export const BtnSearch = styled.button`
     cursor: pointer;
     margin-left: 5px;
   `;
+export const NoResults = styled.p`
+    grid-column: span 5;
+    text-align: center;
+  `;
