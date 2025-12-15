@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import {GridMovies, MovieCard, PosterMovie, MovieTitle, Rating, 
         MovieModal, ModalContent, VoteAvg, CloseButton, InputSearch,
         BtnSearch, NoResults} from "../assets/css/movies.tsx";
+import { toast } from 'react-toastify';
 
 const Movies: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -17,7 +18,11 @@ const Movies: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
 
   const fetchSearch = async (pageNumber = page) => {
-    if (!movieSearch.trim()) return;
+    if (!movieSearch){
+      toast.warning("Digite o nome do filme!");
+      return;
+    }
+    if (!movieSearch?.trim()) return;
     try {
       const response = await api.get<MovieProps>(`search/movie`,
         {
